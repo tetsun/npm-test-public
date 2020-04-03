@@ -23,10 +23,10 @@ jobs:
     - name: check the version
       run: |
         npm install can-npm-publish
-        can-npm-publish
+        npx can-npm-publish
     - name: build
       run: |
-        npm install
+        npm ci
         npm run build
     - name: publish
       run: npm publish

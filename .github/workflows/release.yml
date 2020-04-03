@@ -23,7 +23,7 @@ jobs:
     - name: check the version
       run: |
         npm install can-npm-publish
-        npx can-npm-publish
+        npx can-npm-publish --verbose
     - name: build
       run: |
         npm ci

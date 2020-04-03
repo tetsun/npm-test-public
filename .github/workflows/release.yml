@@ -1,0 +1,36 @@
+name: npm publish
+# master branchにpush/mergeされたときのみreleaseする
+# tag付けは無視する
+on:
+  push:
+    branches:
+      - master
+    tags:
+      - "!*"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    # .npmrcファイルをセットアップ
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '12.x'
+        # ここをnpm registryに変えればnpmにpublish出来る
+        registry-url: 'https://npm.pkg.github.com'
+        # defaultでuser/organizationのscopeとなるため省略可
+        scope: '@tetsun'
+    - name: check the version
+      run: |
+        npm install can-npm-publish
+        can-npm-publish
+    - name: build
+      run: |
+        npm install
+        npm run build
+    - name: publish
+      run: npm publish
+      env:
+        # repoのsecretsに登録する
+        # npm registryにpublishする場合はnpmのtokenを取得して登録する
+        NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}

@@ -1,0 +1,32 @@
+{
+  "name": "@tetsun/npm-test-public",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --colors --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tetsun/npm-test-public.git"
+  },
+  "files": [
+    "public/mtr.min.js",
+    "public/mtr.min.js.map"
+  ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "author": "Tetsuya Nakamura",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tetsun/npm-test-public/issues"
+  },
+  "homepage": "https://github.com/tetsun/npm-test-public#readme",
+  "devDependencies": {
+    "ts-loader": "^6.2.2",
+    "typescript": "^3.8.3",
+    "webpack": "^4.42.1",
+    "webpack-cli": "^3.3.11"
+  }
+}
